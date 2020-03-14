@@ -1,5 +1,5 @@
 # Docker Hubにあるpythonイメージをベースにする
-FROM 3.8-alpine
+FROM python:3.7-alpine
 
 # 環境変数を設定する
 ENV PYTHONUNBUFFERED 1
