@@ -26,7 +26,7 @@ def mrrs(request):
             # リクエストパラメーターをデーターモデルに当て込みます.
             data_object = room_reservation(
                 id=reserv_id, 
-                room_id=room_id, 
+                room_id=room_info(room_id=room_id), 
                 user=reserv_name, 
                 start_date_time=start_date_time, 
                 end_date_time=end_date_time, 
@@ -38,7 +38,7 @@ def mrrs(request):
             # リクエストパラメーターをデーターモデルに当て込みます.
             data_object = room_reservation(
                 id=reserv_id, 
-                room_id=room_id, 
+                room_id=room_info(room_id=room_id), 
                 user=reserv_name, 
                 start_date_time=start_date_time, 
                 end_date_time=end_date_time, 
@@ -50,7 +50,7 @@ def mrrs(request):
             # リクエストパラメーターをデーターモデルに当て込みます.
             data_object = room_reservation(
                 id=reserv_id, 
-                room_id=room_id, 
+                room_id=room_info(room_id=room_id), 
                 user=reserv_name, 
                 start_date_time=start_date_time, 
                 end_date_time=end_date_time, 
