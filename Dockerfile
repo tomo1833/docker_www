@@ -5,7 +5,6 @@ FROM alpine:3.11
 ENV PYTHONUNBUFFERED 1
 
 # コンテナ内にcodeディレクトリを作り、そこをワークディレクトリとする
-RUN apt-get install python-pip RUN pip install --upgrade pip
 RUN mkdir /code 
 WORKDIR /code
 
@@ -17,3 +16,4 @@ RUN pip install -r requirements.txt
 
 # ホストPCの各種ファイルをcodeディレクトリにコピーする
 ADD . /code/
+
