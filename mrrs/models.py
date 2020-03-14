@@ -18,6 +18,8 @@ class room_reservation (models.Model):
     end_date_time = models.DateTimeField(default=timezone.now)
     # 削除フラグ : INTEGER型
     del_flg = models.IntegerField()
+    
+    room_id = models.ForeignKey('room_info', to_field='room_id', on_delete=models.PROTECT)
 
 class room_info (models.Model):
     """
@@ -30,3 +32,4 @@ class room_info (models.Model):
     room_name = models.CharField(max_length=30)
     # 削除フラグ : INTEGER型
     del_flg = models.IntegerField()
+
