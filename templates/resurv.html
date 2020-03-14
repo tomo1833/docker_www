@@ -378,19 +378,21 @@
                       </a>
                     </div>
                   </div>
+
                   <ul class="reserve_list_row-bars">
                     <!-- 押下時値を渡す -->
                     <li class="js-modal-open-update" 
-                      style="grid-column: {{reserv.start_date_time|date:'H'}}/{{reserv.end_date_time|date:'H'}}; background-color: #465DAA;"
-                      data-id={{reserv.id}}
+                      style="grid-column: {{reserv.room_reservation__start_date_time|date:'H'}}/{{reserv.room_reservation__end_date_time|date:'H'}}; background-color: #465DAA;"
+                      data-id={{reserv.room_reservation__id}}
                       data-room_id={{reserv.room_id }}
-                      data-room_user={{reserv.user }}
-                      data-start_date_time="{{reserv.start_date_time|date:'Y-m-j H:i:s'}}"
-                      data-end_date_time="{{reserv.end_date_time|date:'Y-m-j H:i:s'}}"
+                      data-room_user={{reserv.room_reservation__user }}
+                      data-start_date_time="{{reserv.room_reservation__start_date_time|date:'Y-m-j H:i:s'}}"
+                      data-end_date_time="{{reserv.room_reservation__end_date_time|date:'Y-m-j H:i:s'}}"
                     >
                       <span class="user_name">{{reserv.user}}</span>
                     </li>
                   </ul>
+
                 </div>
                 {% endfor %}
               </div>
