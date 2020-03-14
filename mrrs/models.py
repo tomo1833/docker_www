@@ -18,3 +18,15 @@ class room_reservation (models.Model):
     end_date_time = models.DateTimeField(default=timezone.now)
     # 削除フラグ : INTEGER型
     del_flg = models.IntegerField()
+
+class room_info (models.Model):
+    """
+    room_infoテーブルのモデル.
+
+    """
+    # id : INTEGER型で、主キー
+    room_id = models.IntegerField(primary_key=True)
+    # 会議室名 : 文字列型30桁
+    room_name = models.CharField(max_length=30)
+    # 削除フラグ : INTEGER型
+    del_flg = models.IntegerField()
