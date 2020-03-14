@@ -108,7 +108,8 @@ LANGUAGE_CODE = 'en-us'
 
 # UTCから変更:日本標準時
 # TIME_ZONE = 'UTC'
-TIME_ZONE = 'Asia/Tokyo'USE_I18N = True
+TIME_ZONE = 'Asia/Tokyo'
+USE_I18N = True
 
 USE_L10N = True
 
