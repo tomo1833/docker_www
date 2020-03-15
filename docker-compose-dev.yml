@@ -3,7 +3,6 @@ version: '3'  # Docker Composeのバージョン
 services:
   web:  # コンテナに名前をつける
     build: .  # Dockerfileがあるディレクトリへのパス
-    container_name: web
     volumes:
       - .:/code  # ホストPCのカレントディレクトリとコンテナ内のcodeディレクトリを同期させる
     ports:
