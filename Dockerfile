@@ -17,3 +17,7 @@ RUN pip install -r requirements.txt
 # ホストPCの各種ファイルをcodeディレクトリにコピーする
 ADD . /code/
 
+RUN useradd -m myuser
+USER myuser
+
+CMD exec gunicorn -b 0.0.0.0:$PORT website.wsgi
