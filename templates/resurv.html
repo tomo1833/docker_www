@@ -332,11 +332,11 @@
                 {% for room_info in roon_data %}
                 <div class="reserve_list_row">
                   <div class="reserve_list_row-first">
-                    <div class="reserve_text">会議室{{room_info.room_name}}：予約[{{room_info.room_id}}]</div>
+                    <div class="reserve_text">{{room_info.room_name}}：ID[{{room_info.room_id}}]</div>
                   </div>
                   <ul class="reserve_list_row-bars">
                     {% for reserv_data in reserv_data %}
-                      {% if room_info.room_id == reserv_data.room_id %}
+                      {% ifequal room_info.room_id  reserv_data.room_id %}
                     <li style="grid-column: {{reserv_data.start_date_time|date:'H'}}/{{reserv_data.end_date_time|date:'H'}}; background-color: #465DAA;"><span class="user_name">{{reserv_data.user}}</span></li>
                       {% endif %}
                     {% endfor %}
