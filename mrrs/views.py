@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from .models import room_info, room_reservation_
+from .models import room_info, room_reservation
 from . import forms
 
 
