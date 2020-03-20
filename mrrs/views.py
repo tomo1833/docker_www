@@ -49,16 +49,10 @@ def room(request):
     # リクエストがPOST形式の場合 データーベースに会議室予約システムの情報を登録する.
     if request.method == "POST":
 
-        # 予約ID
-        reserv_id = request.POST.get('reserv_id')
         # 会議室ID
         room_id = request.POST.get('room_id')
         # 利用者
-        reserv_name = request.POST.get('reserv_name')
-        # 開始日時
-        start_date_time = request.POST.get('start_date_time')
-        # 終了日時
-        end_date_time = request.POST.get('end_date_time')  
+        room_name = request.POST.get('room_name') 
 
         # リクエストパラメーターをデーターモデルに当て込みます.
         data_object = room_info(
@@ -69,11 +63,11 @@ def room(request):
         data_object.save()
 
     # データーモデルからデーターを取得する.
-    room_info = room_info.objects.all()
+    data_object = room_info.objects.all()
     # フォームオブジェクトを取得する.
     form = forms.room_info(request.GET or None)
     room_info = {
         'form': form,
-        'room_info' : room_info,
+        'room_info' : data_object,
     }
     return render(request, 'room.html', room_info)
