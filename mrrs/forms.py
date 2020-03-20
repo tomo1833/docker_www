@@ -54,7 +54,7 @@ class reserv_room_info(forms.Form):
         widget = forms.TextInput(attrs={'class' : 'reserve_type_text'})
     )
     # 会議室名
-    reserv_name = forms.CharField(
+    room_name = forms.CharField(
         label = '会議室名',
         max_length = 20,
         required = True,
