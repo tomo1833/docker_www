@@ -76,4 +76,4 @@ def room(request):
         'form': form,
         'room_info' : room_info,
     }
-     return render(request, 'room.html', room_info)
+    return render(request, 'room.html', room_info)
