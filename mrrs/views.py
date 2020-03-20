@@ -32,7 +32,7 @@ def mrrs(request):
         data_object.save()
 
     # データーモデルからデーターを取得する.
-    reserv_data = models.room_info.objects.filter(room_reservation__id__isnull=True)
+    reserv_data = models.room_info.objects.filter(room_reservation__id__isnull=True,room_reservation__id__isnull=False)
     
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
