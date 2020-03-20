@@ -35,7 +35,7 @@ def mrrs(request):
         data_object.save()
 
     # データーモデルからデーターを取得する.
-    reserv_data = models.room_info.objects.filter(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).select_related().all())
+    reserv_data = models.room_info.objects.filter(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).select_related().all()
     
     print(models.room_info.objects.filter(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).select_related().all()).query)
 
