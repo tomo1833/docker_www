@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from . import models
+from .models import room_info, room_reservation_
 from . import forms
 
 
@@ -26,7 +26,7 @@ def mrrs(request):
         # リクエストパラメーターをデーターモデルに当て込みます.
         data_object = models.room_reservation(
             id=reserv_id, 
-            room_id=models.room_info.objects.get(room_id=room_id) , 
+            room_id=room_info.objects.get(room_id=room_id) , 
             user=reserv_name, 
             start_date_time=start_date_time, 
             end_date_time=end_date_time, 
@@ -35,9 +35,9 @@ def mrrs(request):
         data_object.save()
 
     # データーモデルからデーターを取得する.
-    reserv_data = models.room_info.objects.select_related(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).select_related().all()
+    reserv_data = room_info.objects.select_related(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).select_related().all()
     
-    print(models.room_info.objects.select_related(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).select_related().all().query)
+    print(room_info.objects.select_related(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).select_related().all().query)
 
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
