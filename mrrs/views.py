@@ -83,7 +83,7 @@ def room(request):
         room_name = request.POST.get('room_name') 
 
         # リクエストパラメーターをデーターモデルに当て込みます.
-        data_object = models.room_info(
+        data_object = room_info(
             room_id=room_id, 
             room_name=room_name, 
             del_flg=0)
