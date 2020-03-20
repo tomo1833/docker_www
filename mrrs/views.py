@@ -3,8 +3,6 @@ from django.shortcuts import render
 from .models import room_info, room_reservation
 from . import forms
 
-
-
 def mrrs(request):
     """
     会議室予約システム画面の関数
@@ -22,16 +20,41 @@ def mrrs(request):
         # 終了日時
         end_date_time = request.POST.get('end_date_time')  
 
-        # リクエストパラメーターをデーターモデルに当て込みます.
-        data_object = room_reservation(
-            id=reserv_id, 
-            room_id=room_info.objects.get(room_id=room_id) , 
-            user=reserv_name, 
-            start_date_time=start_date_time, 
-            end_date_time=end_date_time, 
-            del_flg=0)
-        # データーを登録する.
-        data_object.save()
+        if '登 録' in request.POST.get('action'): 
+            # リクエストパラメーターをデーターモデルに当て込みます.
+            data_object = room_reservation(
+                id=reserv_id, 
+                room_id=room_info.objects.get(room_id=room_id) , 
+                user=reserv_name, 
+                start_date_time=start_date_time, 
+                end_date_time=end_date_time, 
+                del_flg=0)
+            # データーを登録する.
+            data_object.save()
+        
+        if '削 除' in request.POST.get('action'): 
+            # リクエストパラメーターをデーターモデルに当て込みます.
+            data_object = room_reservation(
+                id=reserv_id, 
+                room_id=room_info.objects.get(room_id=room_id) , 
+                user=reserv_name, 
+                start_date_time=start_date_time, 
+                end_date_time=end_date_time, 
+                del_flg=0)
+            # データーを削除する.
+            data_object.delete()
+
+        if '更 新' in request.POST.get('action'): 
+            # リクエストパラメーターをデーターモデルに当て込みます.
+            data_object = room_reservation(
+                id=reserv_id, 
+                room_id=room_info.objects.get(room_id=room_id) , 
+                user=reserv_name, 
+                start_date_time=start_date_time, 
+                end_date_time=end_date_time, 
+                del_flg=1)
+            # データーを更新する.
+            data_object.save()
 
     # データーモデルからデーターを取得する.
     roon_data = room_info.objects.all()
