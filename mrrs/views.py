@@ -1,4 +1,3 @@
-from django.db.models import Q
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from .models import room_info, room_reservation
@@ -35,15 +34,16 @@ def mrrs(request):
         data_object.save()
 
     # データーモデルからデーターを取得する.
-    reserv_data = room_reservation.objects.filter(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).all()
-    
-    print(room_reservation.objects.filter(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).all().query)
+    roon_data = room_info.objects.all()
+    reserv_data = room_reservation.objects.all()
+    print(room_reservation.objects.all().query())
 
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
     # テンプレートに渡す値を設定する
     display = {
         'form': form,
+        'roon_data' : roon_data,
         'reserv_data' : reserv_data,
     }
 
@@ -68,7 +68,7 @@ def room(request):
         data_object.save()
 
     # データーモデルからデーターを取得する.
-    room_data = models.room_info.objects.all()
+    room_data = room_info.objects.all()
     # フォームオブジェクトを取得する.
     form = forms.reserv_room_info(request.GET or None)
     display = {
