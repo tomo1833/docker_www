@@ -1,7 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from .models import room_reservation, room_info
-
+from . import models
 from . import forms
 
 def mrrs(request):
@@ -22,7 +21,7 @@ def mrrs(request):
         end_date_time = request.POST.get('end_date_time')  
 
         # リクエストパラメーターをデーターモデルに当て込みます.
-        data_object = room_reservation(
+        data_object = models.room_reservation(
             id=reserv_id, 
             room_id=room_id, 
             user=reserv_name, 
@@ -33,7 +32,7 @@ def mrrs(request):
         data_object.save()
 
     # データーモデルからデーターを取得する.
-    reserv_data = room_reservation.objects.all()
+    reserv_data = models.room_reservation.objects.all()
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
     # テンプレートに渡す値を設定する
@@ -55,7 +54,7 @@ def room(request):
         room_name = request.POST.get('room_name') 
 
         # リクエストパラメーターをデーターモデルに当て込みます.
-        data_object = room_info(
+        data_object = models.room_info(
             room_id=room_id, 
             room_name=room_name, 
             del_flg=0)
@@ -63,11 +62,11 @@ def room(request):
         data_object.save()
 
     # データーモデルからデーターを取得する.
-    data_object = room_info.objects.all()
+    room_data = models.room_info.objects.all()
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
-    room_info = {
+    display = {
         'form': form,
-        'room_info' : data_object,
+        'room_data' : room_data,
     }
-    return render(request, 'room.html', room_info)
+    return render(request, 'room.html', display)
