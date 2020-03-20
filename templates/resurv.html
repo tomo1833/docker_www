@@ -338,7 +338,7 @@
                     {% for reserv_data in reserv_data %}
                       {% ifequal room_info.room_id  reserv_data.room_id %}
                     <li style="grid-column: {{reserv_data.start_date_time|date:'H'}}/{{reserv_data.end_date_time|date:'H'}}; background-color: #465DAA;"><span class="user_name">{{reserv_data.user}}</span></li>
-                      {% endif %}
+                      {% endifequal %}
                     {% endfor %}
                   </ul>
                 </div>
