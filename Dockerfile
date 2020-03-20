@@ -1,23 +1,36 @@
-# Docker Hubにあるpythonイメージをベースにする
+# pull official base image
 FROM python:3.7-alpine
 
-# 環境変数を設定する
-ENV PYTHONUNBUFFERED 1
-
-# コンテナ内にcodeディレクトリを作り、そこをワークディレクトリとする
-RUN mkdir /code 
+# set work directory
+RUN mkdir /code
 WORKDIR /code
 
-# ホストPCにあるrequirements.txtをコンテナ内のcodeディレクトリにコピーする
-# コピーしたrequirements.txtを使ってパッケージをインストールする
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+ENV DEBUG 0
 
-ADD requirements.txt /code/
+# install psycopg2
+RUN apk update \
+    && apk add --virtual build-deps gcc python3-dev musl-dev \
+    && apk add postgresql-dev \
+    && pip install psycopg2 \
+    && apk del build-deps
+
+# install dependencies
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
+
+# copy project
+#COPY . .
+ADD . /code/
+
+# add and run as non-root user
+RUN adduser -D myuser
+USER myuser
+# run gunicorn
+CMD gunicorn website.wsgi:application --bind 0.0.0.0:$PORT
+#CMD python manage.py runserver 0.0.0.0:8000
 
 # ホストPCの各種ファイルをcodeディレクトリにコピーする
 ADD . /code/
-
-RUN useradd -m myuser
-USER myuser
-
-CMD exec gunicorn -b 0.0.0.0:$PORT website.wsgi

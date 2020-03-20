@@ -1,12 +1,12 @@
-version: '3'  # Docker Composeのバージョン
+version: "3"
 
 services:
-  web:  # コンテナに名前をつける
-    build: .  # Dockerfileがあるディレクトリへのパス
+  web:
+    build: .
     volumes:
-      - .:/code  # ホストPCのカレントディレクトリとコンテナ内のcodeディレクトリを同期させる
-    ports:
-      - "8000:8000"
+      - .:/code
     environment:
-      - DJANGO_SETTINGS_MODULE=main.settings_development
-    command: python manage.py runserver
+      - DJANGO_SETTINGS_MODULE=website.settings_development
+    ports:
+      - 8000:8000
+    command: python manage.py runserver 0.0.0.0:8000
