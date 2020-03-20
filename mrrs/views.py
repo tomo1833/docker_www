@@ -43,3 +43,7 @@ def mrrs(request):
     }
 
     return render(request, 'resurv.html', display)
+
+def room(request):
+
+     return HttpResponse('room')
