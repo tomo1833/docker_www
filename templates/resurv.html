@@ -336,6 +336,8 @@
                   </div>
                   <ul class="reserve_list_row-bars">
                     {% for reserv_info in reserv_data %}
+                    {{room_info.room_id}}
+                    {{reserv_info.room_id}}
                       {% if room_info.room_id == reserv_info.room_id %}
                     <li style="grid-column: {{reserv_info.start_date_time|date:'H'}}/{{reserv_info.end_date_time|date:'H'}}; background-color: #465DAA;"><span class="user_name">{{reserv_info.user}}</span></li>
                       {% endif %}
