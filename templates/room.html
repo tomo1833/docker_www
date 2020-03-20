@@ -1,0 +1,36 @@
+  
+<!DOCTYPE html>
+<html>
+  <head lang="ja">
+    <meta charset="utf-8">
+    <title>会議室予約システム</title>
+  </head>
+  <body>
+    <h1>会議室予約システム</h1>
+    <!-- 入力フォームと送信ボタンは formタグで囲み postメソッドで送信する -->
+    <form action="" method="POST">
+      <!--POSTを行う際に必要 -->
+      {% csrf_token %}
+      <div style='margin:0 auto; width:1000px;'>
+        <!--会議室ID-->
+        <label>{{ form.room_id.label }} {{ form.room_id }}</label><br/>
+        <!--利用者-->
+        <label>{{ form.room_name.label }} {{ form.room_name }}</label><br/>
+        <br />
+        <input type="submit" value="送信">
+
+        {% for room in room_info %}
+          <ul>
+          <!--会議室ID-->
+          <li>{{room.room_id}}</li>
+          <!--利用者-->
+          <li>{{room.room_name}}</li>
+        </ul>
+        {% endfor %}
+
+        <br/>
+        <br/>
+      </div>
+    </form>
+  </body>
+</html>

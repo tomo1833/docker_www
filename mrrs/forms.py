@@ -40,3 +40,23 @@ class reserv_room(forms.Form):
         required = True,
         widget = forms.TextInput(attrs={'class' : 'reserve_type_text'})
     )
+
+class reserv_room_info(forms.Form):
+    """
+    reserv_room_infoのフォーム.
+
+    """
+    # 会議室ID
+    room_id = forms.CharField(
+        label = '会議室ID',
+        max_length = 20,
+        required = True,
+        widget = forms.TextInput(attrs={'class' : 'reserve_type_text'})
+    )
+    # 会議室名
+    reserv_name = forms.CharField(
+        label = '会議室名',
+        max_length = 20,
+        required = True,
+        widget = forms.TextInput(attrs={'class' : 'reserve_type_text'})
+    )
