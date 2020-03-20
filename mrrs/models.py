@@ -24,7 +24,7 @@ class room_reservation (models.Model):
     # id : INTEGER型で、主キー
     id = models.IntegerField(primary_key=True)
     # 会議室ID : INTEGER型
-    room_id=models.ForeignKey(room_info)
+    room_id=models.ForeignKey(room_info, on_delete=models.CASCADE)
     # 利用者 : 文字列型30桁
     user = models.CharField(max_length=30)
     # 開始日時 : DATETIME型
