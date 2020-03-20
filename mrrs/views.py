@@ -36,7 +36,6 @@ def mrrs(request):
     # データーモデルからデーターを取得する.
     roon_data = room_info.objects.all()
     reserv_data = room_reservation.objects.all()
-    print(room_reservation.objects.all().query())
 
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
