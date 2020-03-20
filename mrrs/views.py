@@ -37,6 +37,7 @@ def mrrs(request):
     roon_data = room_info.objects.all()
     reserv_data = room_reservation.objects.all()
 
+    print(reserv_data)
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
     # テンプレートに渡す値を設定する
