@@ -23,7 +23,7 @@ def mrrs(request):
         # リクエストパラメーターをデーターモデルに当て込みます.
         data_object = models.room_reservation(
             id=reserv_id, 
-            room_id=room_id, 
+            room_id=models.room_info.objects.get(room_id=room_id) , 
             user=reserv_name, 
             start_date_time=start_date_time, 
             end_date_time=end_date_time, 
