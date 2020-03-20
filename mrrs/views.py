@@ -35,9 +35,9 @@ def mrrs(request):
         data_object.save()
 
     # データーモデルからデーターを取得する.
-    reserv_data = models.room_info.objects.filter(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False).values(room_reservation__id))
+    reserv_data = models.room_info.objects.filter(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).values(room_reservation__id)
     
-    print(models.room_info.objects.filter(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False).values(room_reservation__id)).query)
+    print(models.room_info.objects.filter(Q(room_reservation__room_id__isnull=True) | Q(room_id__isnull=False)).values(room_reservation__id).query)
 
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
