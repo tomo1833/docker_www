@@ -64,7 +64,7 @@ def room(request):
     # データーモデルからデーターを取得する.
     room_data = models.room_info.objects.all()
     # フォームオブジェクトを取得する.
-    form = forms.reserv_room(request.GET or None)
+    form = forms.reserv_room_info(request.GET or None)
     display = {
         'form': form,
         'room_data' : room_data,
