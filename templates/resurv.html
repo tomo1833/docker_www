@@ -339,6 +339,84 @@
   </head>
   <body>
 
+    <style>
+      @media screen and (max-width: 600px) {
+    #mini-calendar thead {
+        display: none;
+    }
+    #mini-calendar th,
+    #mini-calendar td {
+        display: block;
+        width: 100%;
+        padding: 0;
+    }
+    #mini-calendar td {
+        height: auto;
+        display: -webkit-flex;
+        display: flex;
+    }
+    #mini-calendar .calendar-none {
+        display: none
+    }
+ 
+    #mini-calendar .calendar-labels {
+        padding: 5px;
+    }
+    #mini-calendar [class*=calender-label] {
+        display: inline-block;
+        padding: 5px;
+        margin-top: 0;
+        margin-right: 5px;
+        font-size: 12px;
+    }
+ 
+    /* 日付 */
+    #mini-calendar td .calendar-day-number {
+        font-weight: normal;
+        padding: 7px;
+        font-size: 18px;
+        display: block;
+        background: #f2e6cd;
+        margin-bottom: 0;
+        width: 75px;
+        height: auto;
+    }
+    #mini-calendar td.calendar-holiday .calendar-day-number,
+    #mini-calendar td.calendar-sun .calendar-day-number {
+        background: #f8c7c7;
+    }
+    #mini-calendar td.calendar-sat .calendar-day-number {
+        background: #c8ebfe;
+    }
+    /* モバイル用曜日を追加 */
+    #mini-calendar td i:after {
+        font-size: 12px;
+        position: relative;
+        left: -5px;
+    }
+    #mini-calendar td:nth-child(1) i:after {
+        content: "（日）";
+    }
+    #mini-calendar td:nth-child(2) i:after {
+        content: "（月）";
+    }
+    #mini-calendar td:nth-child(3) i:after {
+        content: "（火）";
+    }
+    #mini-calendar td:nth-child(4) i:after {
+        content: "（水）";
+    }
+    #mini-calendar td:nth-child(5) i:after {
+        content: "（木）";
+    }
+    #mini-calendar td:nth-child(6) i:after {
+        content: "（金）";
+    }
+    #mini-calendar td:nth-child(7) i:after {
+        content: "（土）";
+    }
+}
+    </style>
     <div id="mini-calendar">
       <div class="calendar-head"><p class="calendar-year-month">2017年5月</p></div>
       <table>
