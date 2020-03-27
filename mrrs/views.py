@@ -64,7 +64,8 @@ def mrrs(request):
 
     # 月曜日から始まるカレンダー
     cal = calendar.Calendar(0)
-    month_days = cal.monthdatescalendar(datetime.date.year, datetime.date.month)
+    today = datetime.date.today()
+    month_days = cal.monthdatescalendar(today.year, today.month)
 
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
