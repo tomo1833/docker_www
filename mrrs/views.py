@@ -1,3 +1,5 @@
+import calendar
+import datetime
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from .models import room_info, room_reservation
@@ -60,7 +62,10 @@ def mrrs(request):
     roon_data = room_info.objects.all()
     reserv_data = room_reservation.objects.all()
 
-    print(reserv_data)
+    # 月曜日から始まるカレンダー
+    cal = calendar.Calendar(0)
+    month_days = cal.monthdatescalendar(datetime.date.year, datetime.date.month)
+
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
     # テンプレートに渡す値を設定する
@@ -68,6 +73,7 @@ def mrrs(request):
         'form': form,
         'roon_data' : roon_data,
         'reserv_data' : reserv_data,
+        'month_days' : month_days,
     }
 
     return render(request, 'resurv.html', display)
