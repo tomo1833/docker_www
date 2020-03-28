@@ -624,7 +624,7 @@
           </div>
 
           <!-- 会議室の内容 -->
-          {% for room_info in roon_data %}
+          {% for room_info in room_data %}
           <div class="reserve_list_row">
             <div class="reserve_list_row-first">
               <div class="reserve_text">
@@ -676,17 +676,7 @@
           <p class="calendar-year-month">{{cal_date|date:"Y年m月"}}</p>
         </div>
         <table>
-          <thead>
-            <tr>
-              <th>月</th>
-              <th>火</th>
-              <th>水</th>
-              <th>木</th>
-              <th>金</th>
-              <th class="calendar-sat">土</th>
-              <th class="calendar-sun">日</th>
-            </tr>
-          </thead>
+          ee
           <tbody>
             {% for week in month_days %}
             <tr>

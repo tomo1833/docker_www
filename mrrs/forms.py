@@ -18,9 +18,8 @@ class reserv_room(forms.Form):
     # 会議室ID
     room_id = forms.CharField(
         label="会議室ID",
-        max_length=20,
         required=True,
-        widget=forms.TextInput(attrs={"class": "reserve_type_text"}),
+        widget=forms.Select(attrs={"class": "reserve_type_select"}),
     )
     # 利用者
     reserv_name = forms.CharField(

@@ -85,20 +85,27 @@ def mrrs(request):
             month_ago = first_day - relativedelta(months=1)
 
     # データーモデルからデーターを取得する.
-    roon_data = room_info.objects.all()
+    room_data = room_info.objects.all()
     reserv_data = room_reservation.objects.filter(
         start_date_time__year=today.year,
         start_date_time__month=today.month,
         start_date_time__day=today.day,
     )
-
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
+    select_room_data = []
+    for room in room_data:
+        room_dict = {}
+        room_dict[room.room_id] = room.room_name
+        select_room_data.append(room_dict)
+
+    form.fields["room_id"].choices = select_room_data
+    context = {"form": form}
 
     # テンプレートに渡す値を設定する
     display = {
         "form": form,
-        "roon_data": roon_data,
+        "room_data": room_data,
         "reserv_data": reserv_data,
         "cal_date": today,
         "month_days": month_days,
