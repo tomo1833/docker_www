@@ -82,8 +82,7 @@ def mrrs(request):
         "form": form,
         "roon_data": roon_data,
         "reserv_data": reserv_data,
-        "year_month_days_text": "{0:%Y年%m月%d日}".format(today),
-        "year_month_text": "{0:%Y年%m月}".format(today),
+        "cal_date": today,
         "month_days": month_days,
     }
 
@@ -94,12 +93,10 @@ def room(request):
 
     # リクエストがPOST形式の場合 データーベースに会議室予約システムの情報を登録する.
     if request.method == "POST":
-
         # 会議室ID
         room_id = request.POST.get("room_id")
         # 利用者
         room_name = request.POST.get("room_name")
-
         # リクエストパラメーターをデーターモデルに当て込みます.
         data_object = room_info(room_id=room_id, room_name=room_name, del_flg=0,)
         # データーを登録する.

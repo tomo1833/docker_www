@@ -662,7 +662,7 @@
       <!-- -------------------------------------------------- -->
       <div id="mini-calendar">
         <div class="calendar-head">
-          <p class="calendar-year-month">{{month_days_text}}</p>
+          <p class="calendar-year-month">{{cal_date:}}</p>
         </div>
         <table>
           <thead>
@@ -681,8 +681,8 @@
             <tr>
               {% for day in week %}
               <td>
-                <a href="{% url 'mrrs' %}?days={{day}}">
-                  <i class="calendar-day-number">{{day.day}}</i>
+                <a href="{% url 'mrrs' %}?days={{day|date;'YmD'}}">
+                  <i class="calendar-day-number">{{day|date:"d"}}</i>
                   <div class="calendar-labels"></div>
                 </a>
               </td>
