@@ -603,6 +603,7 @@
         <!-- -------------------------------------------------- -->
         <!-- reserve_list start  -->
         <div class="reserve_list">
+          <p class="calendar-year-month">{{cal_date|date:"Y年m月d日"}}</p>
 
           <div class="reserve_list_row reserve_list_row-houre">
 
@@ -662,7 +663,7 @@
       <!-- -------------------------------------------------- -->
       <div id="mini-calendar">
         <div class="calendar-head">
-          <p class="calendar-year-month">{{cal_date:}}</p>
+          <p class="calendar-year-month">{{cal_date|date:"Y年m月"}}</p>
         </div>
         <table>
           <thead>
