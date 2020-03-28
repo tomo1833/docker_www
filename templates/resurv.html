@@ -463,8 +463,8 @@
 
   <style>
     /* ========================================
- * #mini-calendar
- * ========================================*/
+     * #mini-calendar
+    * ========================================*/
 
     #mini-calendar table {
       width: 100%;
@@ -681,7 +681,7 @@
             <tr>
               {% for day in week %}
               <td>
-                <a href="{% url 'mrrs' %}?days={{day|date;'YmD'}}">
+                <a href="{% url 'mrrs' %}?days={{day|date:'YmD'}}">
                   <i class="calendar-day-number">{{day|date:"d"}}</i>
                   <div class="calendar-labels"></div>
                 </a>

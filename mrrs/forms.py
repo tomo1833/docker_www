@@ -7,6 +7,7 @@ class reserv_room(forms.Form):
     reserv_roomのフォーム.
 
     """
+
     # 予約ID
     reserv_id = forms.CharField(
         label="ID",
