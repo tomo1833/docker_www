@@ -1,6 +1,6 @@
 import calendar
 import datetime
-import dateutil.parser import parser
+from dateutil.parser import parser
 from dateutil.relativedelta import relativedelta
 from django.shortcuts import render
 from .models import room_info, room_reservation
