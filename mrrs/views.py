@@ -100,6 +100,7 @@ def mrrs(request):
     # セレクト
     form.fields["room_id"].choices = select_room_data
     form.fields["room_id"].initial = ["1"]
+    print("TEST")
     print(form.fields["room_id"].choices)
 
     # テンプレートに渡す値を設定する
