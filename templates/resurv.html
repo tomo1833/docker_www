@@ -403,8 +403,8 @@
     /** -------------------------------------------------- */
     /** カレンダー                                         */
     /** -------------------------------------------------- */
-
-    #mini-calendar .calendar-year-month {
+    .calendar-year-month-date,
+    .calendar-year-month {
       text-align: center;
       font-size: 20px;
       margin-top: 0;
@@ -602,11 +602,11 @@
         <!-- 入力 リスト                                        -->
         <!-- -------------------------------------------------- -->
         <!-- reserve_list start  -->
+        <div class="reserve_list-head">
+          <p class="calendar-year-month-date">{{cal_date|date:"Y年m月d日"}}</p>
+        </div>
         <div class="reserve_list">
-          <p class="calendar-year-month">{{cal_date|date:"Y年m月d日"}}</p>
-
           <div class="reserve_list_row reserve_list_row-houre">
-
             <!-- 24時間の表記 -->
             <div class="reserve_list_row-first"></div>
             {% for houre in ''|center:24 %}
@@ -682,7 +682,7 @@
             <tr>
               {% for day in week %}
               <td>
-                <a href="{% url 'mrrs' %}?days={{day|date:'YmD'}}">
+                <a href="{% url 'mrrs' %}?days={{day|date:'Ymd'}}">
                   <i class="calendar-day-number">{{day|date:"d"}}</i>
                   <div class="calendar-labels"></div>
                 </a>
