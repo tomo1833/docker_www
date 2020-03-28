@@ -37,8 +37,6 @@
       min-width: 700px;
       /* 外側を操作します。 中央よせをします 0が上下 autoが左右 */
       margin: 0 auto;
-      /* 内側を操作します。 上下左右で内側に40pxの余白を付けます */
-      padding: 40px;
     }
 
     /** reserveのwrapperを使うことでreserveにpaddingやmarginの調整をとりやすくします */
@@ -88,67 +86,67 @@
 
     /** input部分で入力の部品の中の実際の部品textにfocusが当たったとき */
     .reserve_input_div input[type='text']:focus {
-      outline: none;
       /* focus（入力ができるようになるとき）が当たったとき 枠を表示しません */
+      outline: none;
     }
 
     /** 部品のclass です 今回はmrrs/form.pyに記載しています */
     .reserve_type_text {
-      padding: 4px 0;
       /* 内側を操作します。 上下 4px 左右0 で内側に余白を付けます */
-      border: 0;
+      padding: 4px 0;
       /* bordrを表示しない */
-      border-bottom: 1px solid #1b2538;
+      border: 0;
       /* 下線は表示する */
-      background-color: transparent;
+      border-bottom: 1px solid #1b2538;
       /* 背景を透過 */
+      background-color: transparent;
     }
 
     /** reserve_type_text に関連する focus_lineのクラスを指定します */
     .reserve_type_text~.focus_line {
-      position: absolute;
       /* reserve_type_text からみて絶対的な位置を設定します。 positionのデフォルトは staticです */
-      bottom: 0;
+      position: absolute;
       /* 下から0 */
-      left: 0;
+      bottom: 0;
       /* 左から0 */
-      width: 0;
+      left: 0;
       /* 横幅 0 */
-      height: 2px;
+      width: 0;
       /* 高さ 2px */
-      transition: 0.4s;
+      height: 2px;
       /* 要素の2つの状態間の変化を0.4秒で操作します */
-      background-color: #da3c41;
+      transition: 0.4s;
       /* 下線を赤にします */
+      background-color: #da3c41;
     }
 
     /** reserve_type_textのforcusに関連する focus_lineのクラスを指定します */
     .reserve_type_text:focus~.focus_line,
     .reserve_input_div.reserve_type_text~.focus_line {
-      width: 100%;
       /* 横幅 100%にします */
-      transition: 0.4s;
+      width: 100%;
       /* 要素の2つの状態間の変化を0.4秒で操作します */
+      transition: 0.4s;
     }
 
     /**  reserve_type_text に関連する labelを指定します */
     .reserve_type_text~label {
-      position: absolute;
       /* reserve_type_text からみて絶対的な位置を設定します。 positionのデフォルトは staticです */
-      z-index: -1;
+      position: absolute;
       /* labelの重なりz軸を 下にするのかな */
-      top: 4px;
+      z-index: -1;
       /* 上から4px */
-      left: 0;
+      top: 4px;
       /* 左から0 */
-      width: 100%;
+      left: 0;
       /* 横幅 100%にします */
-      transition: 0.3s;
+      width: 100%;
       /* 要素の2つの状態間の変化を0.5秒で操作します */
-      letter-spacing: 0.5px;
+      transition: 0.3s;
       /* 文字の間隔を指定します。*/
-      color: #aaaaaa;
+      letter-spacing: 0.5px;
       /* ラベルの文字の色を灰色っぽいいろにします */
+      color: #aaaaaa;
     }
 
     /**  reserve_type_textのforcusに関連する labelのクラスを指定します */
@@ -262,16 +260,14 @@
     /** -------------------------------------------------- */
     /** reserveのlist部分で使用します */
     .reserve_list {
-      display: grid;
       /* gridを使います */
-      border-radius: 12px;
-      /* 枠に丸みを付けます */
-      position: relative;
+      display: grid;
       /* reserve_input_div_button からみて相対的な位置を設定します。 positionのデフォルトは staticです */
-      box-sizing: border-box;
+      position: relative;
       /* ボックスサイズの算出方法を指定します パディングとボーダーを幅と高さに含めています */
-      border: 1px solid rgba(70, 93, 170, 1);
+      box-sizing: border-box;
       /* 枠を付けます */
+      border: 1px solid rgba(70, 93, 170, 1);
     }
 
     /** reserveのlist部分の行で使用します */
@@ -410,8 +406,9 @@
 
     #mini-calendar .calendar-year-month {
       text-align: center;
-      font-size: 32px;
-      margin-bottom: 20px;
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 0;
       font-weight: bold;
     }
   </style>
@@ -645,6 +642,7 @@
                 data-end_date_time="{{reserv_info.end_date_time|date:'Y-m-j H:i:s'}}">
                 <span class="user_name">{{reserv_info.user}}</span></li>
               </li>
+
               {% endif %}
               {% endfor %}
             </ul>
@@ -652,6 +650,10 @@
           {% endfor %}
         </div>
         <!-- reserve_list end  -->
+        <div>
+          <div>前日</div>
+          <div>翌日</div>
+        </div>
       </div>
       <!-- reserve_wrapper end  -->
 
@@ -678,8 +680,11 @@
             {% for week in month_days %}
             <tr>
               {% for day in week %}
-              <td><i class="calendar-day-number">{{ day.day }}</i>
-                <div class="calendar-labels"></div>
+              <td>
+                <a href="{% url 'mrrs:mrrs'%}?param={{day}}">
+                  <i class="calendar-day-number">{{day.day}}</i>
+                  <div class="calendar-labels"></div>
+                </a>
               </td>
               {% endfor %}
             </tr>

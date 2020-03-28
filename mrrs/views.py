@@ -76,12 +76,14 @@ def mrrs(request):
 
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
+
     # テンプレートに渡す値を設定する
     display = {
         "form": form,
         "roon_data": roon_data,
         "reserv_data": reserv_data,
-        "month_days_text": "{0:%Y年%m月}".format(today),
+        "year_month_days_text": "{0:%Y年%m月%d日}".format(today),
+        "year_month_text": "{0:%Y年%m月}".format(today),
         "month_days": month_days,
     }
 
@@ -111,4 +113,5 @@ def room(request):
         "form": form,
         "room_data": room_data,
     }
+
     return render(request, "room.html", display)
