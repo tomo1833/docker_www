@@ -95,9 +95,8 @@ def mrrs(request):
     form = forms.reserv_room(request.GET or None)
     select_room_data = []
     for room in room_data:
-        room_dict = {}
-        room_dict[room.room_id] = room.room_name
-        select_room_data.append(room_dict)
+        room_list = (room.room_id, room.room_name)
+        select_room_data.append(room_list)
 
     print(select_room_data)
 
