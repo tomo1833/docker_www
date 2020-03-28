@@ -98,12 +98,10 @@ def mrrs(request):
         room_list = (room.room_id, room.room_name)
         select_room_data.append(room_list)
 
-    print(select_room_data)
-
     # セレクト
     form.fields["room_id"].choices = select_room_data
-    context = {"form": form}
 
+    print(form.fields["room_id"].choices)
     # テンプレートに渡す値を設定する
     display = {
         "form": form,
