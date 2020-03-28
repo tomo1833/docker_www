@@ -12,7 +12,7 @@ def mrrs(request):
     # 月曜日から始まるカレンダー
     cal = calendar.Calendar(0)
     today = datetime.date.today()
-    month_days = cal.monthdayscalendar(today.year, today.month)
+    month_days = cal.monthdatescalendar(today.year, today.month)
 
     # リクエストがPOST形式の場合 データーベースに会議室予約システムの情報を登録する.
     if request.method == "POST":
