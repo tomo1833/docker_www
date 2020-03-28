@@ -99,6 +99,7 @@ def mrrs(request):
         room_dict[room.room_id] = room.room_name
         select_room_data.append(room_dict)
 
+    # セレクト
     form.fields["room_id"].choices = select_room_data
     context = {"form": form}
 

@@ -676,7 +676,17 @@
           <p class="calendar-year-month">{{cal_date|date:"Y年m月"}}</p>
         </div>
         <table>
-          ee
+          <thead>
+            <tr>
+              <th>月</th>
+              <th>火</th>
+              <th>水</th>
+              <th>木</th>
+              <th>金</th>
+              <th class="calendar-sat">土</th>
+              <th class="calendar-sun">日</th>
+            </tr>
+          </thead>
           <tbody>
             {% for week in month_days %}
             <tr>
