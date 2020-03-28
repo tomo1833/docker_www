@@ -98,8 +98,8 @@ def mrrs(request):
         select_room_data.append((str(room.room_id), room.room_name))
 
     # セレクト
-    form.fields["room_id"].choices = select_room_data
-    form.fields["room_id"].initial = ["1"]
+    form.fields["id_room_id"].choices = select_room_data
+    form.fields["id_room_id"].initial = ["1"]
     print("TEST")
     print(form)
 
