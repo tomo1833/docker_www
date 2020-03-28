@@ -36,7 +36,7 @@
 
       /** reserveのwrapperを使うことでreserveにpaddingやmarginの調整をとりやすくします */
       .reserve_wrapper {
-         padding   : 50px;                     /* 内側を操作します。 上下 50px 左右200px で内側に余白を付けます */
+         padding   : 50px 0;                   /* 内側を操作します。 上下 50px 左右0px で内側に余白を付けます */
       }
 
 
@@ -290,6 +290,16 @@
         display: flex;
       }
 
+      /** -------------------------------------------------- */
+      /** カレンダー                                         */
+      /** -------------------------------------------------- */
+
+      #mini-calendar .calendar-year-month {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
 
 
 
@@ -346,12 +356,7 @@
 /* ========================================
  * #mini-calendar
  * ========================================*/
- #mini-calendar .calendar-year-month {
-	text-align: center;
-	font-size: 32px;
-	margin-bottom: 20px;
-	font-weight: bold;
-}
+
 #mini-calendar table {
 	width: 100%;
 	border-spacing: 0;
@@ -370,7 +375,7 @@
 }
 #mini-calendar th {
 	color: #fff;
-	background: #4F616B;
+	background: #465DAA;
 	vertical-align: top;
 	padding-top: 7px;
 	padding-bottom: 7px;
@@ -389,7 +394,7 @@
 */
 #mini-calendar td {
 	width: 14.3%;
-	height: 100px;
+	height: 50px;
 	vertical-align: top;
 }
 #mini-calendar td.calendar-day-off {
