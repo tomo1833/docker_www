@@ -93,7 +93,14 @@ def mrrs(request):
     )
     # フォームオブジェクトを取得する.
     form = forms.reserv_room(request.GET or None)
+    select_room_data = []
+    for room in room_data:
+        room_list = (str(room.room_id), room.room_name)
+        select_room_data.append(room_list)
+
     # セレクト
+    form.fields["room_id"].choices = select_room_data
+
     # テンプレートに渡す値を設定する
     display = {
         "form": form,

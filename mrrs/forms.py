@@ -1,5 +1,4 @@
 from django import forms
-from . import models
 
 
 class reserv_room(forms.Form):
@@ -17,8 +16,11 @@ class reserv_room(forms.Form):
         widget=forms.TextInput(attrs={"class": "reserve_type_text"}),
     )
     # 会議室ID
-    room_id = forms.ModelChoiceField(models.room_info.objects, label="会議室")
-
+    room_id = forms.CharField(
+        label="会議室名",
+        required=True,
+        widget=forms.Select(attrs={"class": "reserve_type_select"}),
+    )
     # 利用者
     reserv_name = forms.CharField(
         label="利用者",
