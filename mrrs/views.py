@@ -92,7 +92,7 @@ def mrrs(request):
         start_date_time__day=today.day,
     )
     # フォームオブジェクトを取得する.
-    form = forms.reserv_room(request.GET or None)
+    form = forms.reserv_room()
     select_room_data = []
     for room in room_data:
         select_room_data.append((str(room.room_id), room.room_name))
