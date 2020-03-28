@@ -93,9 +93,9 @@ def mrrs(request):
     )
     # フォームオブジェクトを取得する.
     form = forms.reserv_room()
-    select_room_data = ()
+    select_room_data = []
     for room in room_data:
-        select_room_data = select_room_data + ((str(room.room_id), room.room_name))
+        select_room_data.append((str(room.room_id), room.room_name))
 
     # セレクト
     form.fields["room_id"].choices = select_room_data
