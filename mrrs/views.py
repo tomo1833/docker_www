@@ -1,6 +1,7 @@
 import calendar
 import datetime
-import dateutil.parser
+from dateutil.parser import parser
+from dateutil.relativedelta import relativedelta
 from django.shortcuts import render
 from .models import room_info, room_reservation
 from . import forms
@@ -14,8 +15,11 @@ def mrrs(request):
     cal = calendar.Calendar(0)
     today = datetime.date.today()
     month_days = cal.monthdatescalendar(today.year, today.month)
-    yesterday = today + datetime.timedelta(days=-1)
+    yesterday = today - datetime.timedelta(days=1)
     tomorrow = today + datetime.timedelta(days=1)
+    first_day = today.replace(day=1)
+    month_after = first_day + relativedelta(months=1)
+    month_ago = first_day - relativedelta(months=1)
 
     # リクエストがPOST形式の場合 データーベースに会議室予約システムの情報を登録する.
     if request.method == "POST":
@@ -69,12 +73,16 @@ def mrrs(request):
             # データーを更新する.
             data_object.save()
     else:
-        get_date = request.GET.get("days")
+        get_date = request.GET.get("days")   
         if get_date:
-            today = dateutil.parser.parse(get_date)
+            today = parser.parse(get_date)
             month_days = cal.monthdatescalendar(today.year, today.month)
             yesterday = today + datetime.timedelta(days=-1)
             tomorrow = today + datetime.timedelta(days=1)
+     
+            first_day = today.replace(day=1)
+            month_after = first_day + relativedelta(months=1)
+            month_ago = first_day - relativedelta(months=1)
 
     # データーモデルからデーターを取得する.
     roon_data = room_info.objects.all()
@@ -96,6 +104,8 @@ def mrrs(request):
         "month_days": month_days,
         "yesterday": yesterday,
         "tomorrow": tomorrow,
+        "month_after": month_after,
+        "month_ago": month_ago,
     }
 
     return render(request, "resurv.html", display)

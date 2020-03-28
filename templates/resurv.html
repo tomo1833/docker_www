@@ -42,7 +42,7 @@
     /** reserveのwrapperを使うことでreserveにpaddingやmarginの調整をとりやすくします */
     .reserve_wrapper {
       /* 内側を操作します。 上下 50px 左右0px で内側に余白を付けます */
-      padding: 50px 0;
+      padding: 20px 0;
     }
 
     /** -------------------------------------------------- */
@@ -198,61 +198,61 @@
 
     /** モーダルです  */
     .modal {
-      display: none;
       /* 非表示にします */
-      height: 100vh;
+      display: none;
       /* 高さを決めます(ビューの高さの割合) */
-      position: fixed;
+      height: 100vh;
       /* 特定の場所に配置します */
-      top: 0;
+      position: fixed;
       /* トップ */
-      width: 100%;
+      top: 0;
       /* 横幅 */
+      width: 100%;
     }
 
     /** モーダル背景です  */
     .modal_bg {
-      background: rgba(0, 0, 0, 0.8);
       /* 背景色 */
-      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
       /* 高さを決めます(ビューの高さの割合) */
-      position: absolute;
+      height: 100vh;
       /* 絶対位置に配置します */
-      width: 100%;
+      position: absolute;
       /* 横幅 */
-      top: 0px;
+      width: 100%;
       /* トップ */
-      left: 0px;
+      top: 0px;
       /* 左 */
-      z-index: 150;
+      left: 0px;
       /* レイア  */
+      z-index: 150;
     }
 
     /** モーダル背景です  */
     .modal_content {
-      background: #fff;
       /* 背景色 */
-      left: 50%;
+      background: #fff;
       /* 左 */
-      padding: 40px;
+      left: 50%;
       /* 内側を操作します。 上下 40pxで内側に余白を付けます */
-      position: absolute;
+      padding: 40px;
       /* 絶対位置に配置します */
-      top: 50%;
+      position: absolute;
       /* トップ */
-      transform: translate(-50%, -50%);
+      top: 50%;
       /* 要素の2つの状態間の変化を操作します */
-      width: 60%;
+      transform: translate(-50%, -50%);
       /* 横幅 */
-      z-index: 200;
+      width: 60%;
       /* レイアー */
+      z-index: 200;
     }
 
     /** モーダル */
     .js-modal-open,
     .js-modal-open-update {
-      z-index: 1;
       /* レイア  */
+      z-index: 1;
     }
 
     /** -------------------------------------------------- */
@@ -417,60 +417,6 @@
       margin-bottom: 0;
       font-weight: bold;
     }
-  </style>
-
-  <script type="text/javascript" language="javascript">
-    $(function () {
-      $('.js-modal-open').on('click', function () {
-        $('.js-modal').fadeIn();
-        $('.reserve_list_row-first').css('z-index', 0);
-        $('.js-modal-open-update').css('z-index', 0);
-        $('#id_reserv_id').val("");
-        $('#id_room_id').val("");
-        $('#id_reserv_name').val("");
-        $('#id_start_date_time').val("");
-        $('#input_button').css('display', '');
-        $('#update_button').css('display', 'none');
-        $('#delete_button').css('display', 'none');
-
-        return false;
-      });
-      $('.js-modal-open-update').on('click', function () {
-        $('.js-modal').fadeIn();
-        $('.reserve_list_row-first').css('z-index', 0);
-        $('.js-modal-open').css('z-index', -1);
-        $('.js-modal-open-update').css('z-index', -1);
-        $('#id_reserv_id').val($(this).data('id'));
-        $('#id_room_id').val($(this).data('room_id'));
-        $('#id_reserv_name').val($(this).data('room_user'));
-        $('#id_start_date_time').val($(this).data('start_date_time'));
-        $('#id_end_date_time').val($(this).data('end_date_time'));
-        $('#input_button').css('display', 'none');
-        $('#update_button').css('display', '');
-        $('#delete_button').css('display', '');
-
-        return false;
-      });
-      $('.js-modal-close').on('click', function () {
-        $('.js-modal').fadeOut();
-        $('.reserve_list_row-first').css('z-index', 1);
-        $('.js-modal-open').css('z-index', 1);
-        $('.js-modal-open-update').css('z-index', 1);
-
-        return false;
-      });
-    });
-  </script>
-
-
-</head>
-
-<body>
-
-  <style>
-    /* ========================================
-     * #mini-calendar
-    * ========================================*/
 
     #mini-calendar table {
       width: 100%;
@@ -498,20 +444,22 @@
       padding-bottom: 7px;
     }
 
+    /* ========================================
+     * #mini-calendar
+    * ========================================*/
+    #mini-calendar th.calendar-sun {
+      color: #DF0D2D;
+      background: #F8E4E4;
+    }
 
-    /*
-#mini-calendar th.calendar-sun {
-	color: #DF0D2D;
-	background: #F8E4E4;
-}
-#mini-calendar th.calendar-sat {
-	color: #2574D3;
-	background: #E2F3FC;
-}
-*/
+    #mini-calendar th.calendar-sat {
+      color: #2574D3;
+      background: #E2F3FC;
+    }
+
     #mini-calendar td {
       width: 14.3%;
-      height: 50px;
+      height: 30px;
       vertical-align: top;
     }
 
@@ -596,6 +544,54 @@
       background: #FEFBDA;
     }
   </style>
+
+  <script type="text/javascript" language="javascript">
+    $(function () {
+      $('.js-modal-open').on('click', function () {
+        $('.js-modal').fadeIn();
+        $('.reserve_list_row-first').css('z-index', 0);
+        $('.js-modal-open-update').css('z-index', 0);
+        $('#id_reserv_id').val("");
+        $('#id_room_id').val("");
+        $('#id_reserv_name').val("");
+        $('#id_start_date_time').val("");
+        $('#input_button').css('display', '');
+        $('#update_button').css('display', 'none');
+        $('#delete_button').css('display', 'none');
+
+        return false;
+      });
+      $('.js-modal-open-update').on('click', function () {
+        $('.js-modal').fadeIn();
+        $('.reserve_list_row-first').css('z-index', 0);
+        $('.js-modal-open').css('z-index', -1);
+        $('.js-modal-open-update').css('z-index', -1);
+        $('#id_reserv_id').val($(this).data('id'));
+        $('#id_room_id').val($(this).data('room_id'));
+        $('#id_reserv_name').val($(this).data('room_user'));
+        $('#id_start_date_time').val($(this).data('start_date_time'));
+        $('#id_end_date_time').val($(this).data('end_date_time'));
+        $('#input_button').css('display', 'none');
+        $('#update_button').css('display', '');
+        $('#delete_button').css('display', '');
+
+        return false;
+      });
+      $('.js-modal-close').on('click', function () {
+        $('.js-modal').fadeOut();
+        $('.reserve_list_row-first').css('z-index', 1);
+        $('.js-modal-open').css('z-index', 1);
+        $('.js-modal-open-update').css('z-index', 1);
+
+        return false;
+      });
+    });
+  </script>
+
+
+</head>
+
+<body>
   <div class="wrapper">
     <!-- wrapper start -->
     <header>
@@ -707,7 +703,18 @@
           </tbody>
         </table>
       </div>
-
+      <div class="day-pager-paernt">
+        <div>
+          <a href="{% url 'mrrs' %}?days={{month_ago|date:'Ymd'}}">
+            <p>前日</p>
+          </a>
+        </div>
+        <div>
+          <a href="{% url 'mrrs' %}?days={{month_after|date:'Ymd'}}">
+            <p>翌日</p>
+          </a>
+        </div>
+      </div>
     </article>
 
     <footer></footer>
