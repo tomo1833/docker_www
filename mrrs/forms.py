@@ -3,11 +3,6 @@ from . import models
 
 
 class reserv_room(forms.Form):
-
-    select_room_data = []
-    for room in room_data:
-        select_room_data.append((str(room.room_id), room.room_name))
-
     """
     reserv_roomのフォーム.
 
