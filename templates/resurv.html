@@ -105,6 +105,10 @@
       border: 0;
       border-bottom: 1px solid #1b2538;
       background-color: transparent;
+      font: 16px/24px 'Noto Serif JP', serif;
+      box-sizing: border-box;
+      letter-spacing: 1px;
+      padding-left: 6em;
     }
 
     /* 開始時間 終了時間 */
@@ -168,7 +172,7 @@
 
     /**  reserve_type_text に関連する labelを指定します */
     #id_start_date_time_0~label,
-    #id_end_date_time_1~label,
+    #id_end_date_time_0~label,
     #id_room_id~label,
     .reserve_type_text~label {
       /* reserve_type_text からみて絶対的な位置を設定します。 positionのデフォルトは staticです */
@@ -191,6 +195,8 @@
 
     /**  reserve_type_textのforcusに関連する labelのクラスを指定します */
     #id_start_date_time_0:focus~label,
+    #id_end_date_time_0:focus~label,
+    #id_start_date_time_1:focus~label,
     #id_end_date_time_1:focus~label,
     #id_room_id:focus~label,
     .reserve_type_text:focus~label,
