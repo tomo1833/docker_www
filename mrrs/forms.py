@@ -1,7 +1,12 @@
 from django import forms
+from . import models
 
 
 class reserv_room(forms.Form):
+
+    select_room_data = []
+    for room in room_data:
+        select_room_data.append((str(room.room_id), room.room_name))
 
     """
     reserv_roomのフォーム.
@@ -16,10 +21,8 @@ class reserv_room(forms.Form):
         widget=forms.TextInput(attrs={"class": "reserve_type_text"}),
     )
     # 会議室ID
-    room_id = forms.CharField(
-        label="会議室名",
-        required=True,
-        widget=forms.Select(attrs={"class": "reserve_type_select"}),
+    room_id = forms.ModelChoiceField(
+        models.room_info.objects, label="会議室名", required=True,
     )
     # 利用者
     reserv_name = forms.CharField(
