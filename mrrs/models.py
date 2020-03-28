@@ -16,7 +16,8 @@ class room_info(models.Model):
     del_flg = models.IntegerField()
 
     def __str__(self):
-        return u"%s" % (self.room_id)
+        # return u"%s" % (self.room_id)
+        return self.name
 
 
 class room_reservation(models.Model):
