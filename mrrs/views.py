@@ -1,6 +1,6 @@
 import calendar
 import datetime
-from dateutil.parser import parser
+import dateutil.parser
 from dateutil.relativedelta import relativedelta
 from django.shortcuts import render
 from .models import room_info, room_reservation
@@ -75,7 +75,7 @@ def mrrs(request):
     else:
         get_date = request.GET.get("days")
         if get_date:
-            today = parser(get_date)
+            today = dateutil.parser.parse(get_date)
             month_days = cal.monthdatescalendar(today.year, today.month)
             yesterday = today + datetime.timedelta(days=-1)
             tomorrow = today + datetime.timedelta(days=1)
