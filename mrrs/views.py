@@ -1,6 +1,6 @@
 import calendar
 import datetime
-from dateutil.parser import parser
+import dateutil.parser import parser
 from dateutil.relativedelta import relativedelta
 from django.shortcuts import render
 from .models import room_info, room_reservation
@@ -73,13 +73,13 @@ def mrrs(request):
             # データーを更新する.
             data_object.save()
     else:
-        get_date = request.GET.get("days")   
+        get_date = request.GET.get("days")
         if get_date:
-            today = parser.parse(get_date)
+            today = parser(get_date)
             month_days = cal.monthdatescalendar(today.year, today.month)
             yesterday = today + datetime.timedelta(days=-1)
             tomorrow = today + datetime.timedelta(days=1)
-     
+
             first_day = today.replace(day=1)
             month_after = first_day + relativedelta(months=1)
             month_ago = first_day - relativedelta(months=1)
