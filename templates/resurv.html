@@ -659,12 +659,12 @@
         <!-- reserve_list end  -->
         <div class="day-pager-paernt">
           <div>
-            <a href="{% url 'mrrs' %}?days={{yestaday|date:'Ymd'}}">
+            <a href="{% url 'mrrs' %}?days={{yesterday|date:'Ymd'}}">
               <p>前日</p>
             </a>
           </div>
           <div>
-            <a href="{% url 'mrrs' %}?days={{yestaday|date:'Ymd'}}">
+            <a href="{% url 'mrrs' %}?days={{tomorrow|date:'Ymd'}}">
               <p>翌日</p>
             </a>
           </div>
