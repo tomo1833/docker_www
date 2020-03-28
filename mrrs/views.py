@@ -14,6 +14,8 @@ def mrrs(request):
     cal = calendar.Calendar(0)
     today = datetime.date.today()
     month_days = cal.monthdatescalendar(today.year, today.month)
+    yesterday = today + datetime.timedelta(days=-1)
+    tomorrow = today + datetime.timedelta(days=1)
 
     # リクエストがPOST形式の場合 データーベースに会議室予約システムの情報を登録する.
     if request.method == "POST":
@@ -71,6 +73,8 @@ def mrrs(request):
         if get_date:
             today = dateutil.parser.parse(get_date)
             month_days = cal.monthdatescalendar(today.year, today.month)
+            yesterday = today + datetime.timedelta(days=-1)
+            tomorrow = today + datetime.timedelta(days=1)
 
     # データーモデルからデーターを取得する.
     roon_data = room_info.objects.all()
@@ -90,6 +94,8 @@ def mrrs(request):
         "reserv_data": reserv_data,
         "cal_date": today,
         "month_days": month_days,
+        "yesterday": yesterday,
+        "tomorrow": tomorrow,
     }
 
     return render(request, "resurv.html", display)

@@ -284,35 +284,35 @@
 
     /** グリッドのヘッダー部分 */
     .reserve_list_row-houre {
-      color: #fff;
       /* 文字色 */
-      background-color: #465DAA;
+      color: #fff;
       /* 背景色 */
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: #465DAA;
       /* 枠線 */
-      grid-template-columns: 150px repeat(24, 1fr);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       /* 150px 1frで24時間の枠を作成 */
+      grid-template-columns: 150px repeat(24, 1fr);
     }
 
     /** グリッドの最初部分 */
     .reserve_list_row-houre .reserve_list_row-first {
-      border-top: 0;
       /* 上線 */
-      background-color: #465DAA;
+      border-top: 0;
       /* 背景色 */
+      background-color: #465DAA;
     }
 
     /** グリッドの最初部分 のspan */
     .reserve_list_row-houre span {
-      text-align: center;
       /* 文字中央よせ */
-      font-size: 12px;
+      text-align: center;
       /* 文字サイズ */
-      align-self: center;
+      font-size: 12px;
       /* 中央配置 *
+      align-self: center;
         font-weight: bold;                     /* 文字太さ*/
-      padding: 20px 0;
       /* 内側を操作します。 上下20px 左右0 で内側に余白を付けます */
+      padding: 20px 0;
     }
 
     /** グリッドのライン部分 */
@@ -368,36 +368,42 @@
 
     /** 文字テキスト */
     .reserve_list_row-bars {
-      list-style: none;
       /* マーカーを外す */
-      display: grid;
+      list-style: none;
       /* gridを使います */
-      padding: 9px 0;
+      display: grid;
       /* 内側を操作します。 上下左右 15px で内側に余白を付けます */
-      margin: 0;
+      padding: 9px 0;
       /* 外側を操作します。 上下左右 0px で内側に余白を付けます */
-      grid-template-columns: repeat(24, 1fr);
+      margin: 0;
       /* 150px 1frで24時間の枠を作成 */
-      grid-gap: 8px 0;
+      grid-template-columns: repeat(24, 1fr);
       /* グリッドの間の線 */
-      border-top: 1px solid rgba(221, 221, 221, 0.8);
+      grid-gap: 8px 0;
       /* 上線 */
-      text-align: center;
+      border-top: 1px solid rgba(221, 221, 221, 0.8);
       /* 文字の中央よせ */
+      text-align: center;
     }
 
     /** ユーザー名 */
     .user_name {
-      font-family: 'Noto Serif JP', serif;
       /* googleフォントです */
-      font-size: 12px;
+      font-family: 'Noto Serif JP', serif;
       /* 文字のサイズ */
-      color: #fff;
+      font-size: 12px;
       /* 文字色 白 */
+      color: #fff;
     }
 
     .reserve_div_button {
       display: flex;
+    }
+
+    .day-pager-paernt {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
     }
 
     /** -------------------------------------------------- */
@@ -651,9 +657,17 @@
           {% endfor %}
         </div>
         <!-- reserve_list end  -->
-        <div>
-          <div>前日</div>
-          <div>翌日</div>
+        <div class="day-pager-paernt">
+          <div>
+            <a href="{% url 'mrrs' %}?days={{yestaday|date:'Ymd'}}">
+              <p>前日</p>
+            </a>
+          </div>
+          <div>
+            <a href="{% url 'mrrs' %}?days={{yestaday|date:'Ymd'}}">
+              <p>翌日</p>
+            </a>
+          </div>
         </div>
       </div>
       <!-- reserve_wrapper end  -->
