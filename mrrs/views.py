@@ -1,5 +1,6 @@
 import calendar
 import datetime
+import dateutil.parser
 from django.shortcuts import render
 from .models import room_info, room_reservation
 from . import forms
@@ -65,6 +66,11 @@ def mrrs(request):
             )
             # データーを更新する.
             data_object.save()
+    else:
+        get_date = request.GET.get("days")
+        if get_date:
+            today = dateutil.parser.parse(get_date)
+            month_days = cal.monthdatescalendar(today.year, today.month)
 
     # データーモデルからデーターを取得する.
     roon_data = room_info.objects.all()
