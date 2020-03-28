@@ -19,7 +19,6 @@ class reserv_room(forms.Form):
     room_id = forms.CharField(
         label="会議室名",
         required=True,
-        choices=(),
         widget=forms.Select(attrs={"class": "reserve_type_select"}),
     )
     # 利用者
