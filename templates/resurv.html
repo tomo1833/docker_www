@@ -27,7 +27,10 @@
         $('#id_reserv_id').val("");
         $('#id_room_id').val("");
         $('#id_reserv_name').val("");
-        $('#id_start_date_time').val("");
+        $('#id_start_date_time_0').val("");
+        $('#id_start_date_time_1').val("");
+        $('#id_end_date_time_0').val("");
+        $('#id_end_date_time_1').val("");
         $('#input_button').css('display', '');
         $('#update_button').css('display', 'none');
         $('#delete_button').css('display', 'none');
@@ -42,8 +45,10 @@
         $('#id_reserv_id').val($(this).data('id'));
         $('#id_room_id').val($(this).data('room_id'));
         $('#id_reserv_name').val($(this).data('room_user'));
-        $('#id_start_date_time').val($(this).data('start_date_time'));
-        $('#id_end_date_time').val($(this).data('end_date_time'));
+        $('#id_start_date_time_0').val($(this).data('start_date_time_0'));
+        $('#id_start_date_time_1').val($(this).data('start_date_time_1'));
+        $('#id_end_date_time_0').val($(this).data('end_date_time_0'));
+        $('#id_end_date_time_1').val($(this).data('end_date_time_1'));
         $('#input_button').css('display', 'none');
         $('#update_button').css('display', '');
         $('#delete_button').css('display', '');
@@ -114,8 +119,10 @@
               <li class="js-modal-open-update"
                 style="grid-column: {{reserv_info.start_date_time|date:'H'}}/{{reserv_info.end_date_time|date:'H'}}; background-color: #465DAA;"
                 data-id={{reserv_info.id}} data-room_id={{reserv_info.room_id }} data-room_user={{reserv_info.user }}
-                data-start_date_time="{{reserv_info.start_date_time|date:'Y-m-j H:i:s'}}"
-                data-end_date_time="{{reserv_info.end_date_time|date:'Y-m-j H:i:s'}}">
+                data-start_date_time_0="{{reserv_info.start_date_time|date:'Y-m-j'}}"
+                data-start_date_time_1="{{reserv_info.start_date_time|date:'H:i'}}"
+                data-end_date_time_0="{{reserv_info.end_date_time|date:'Y-m-j'}}"
+                data-end_date_time_1="{{reserv_info.end_date_time|date:'H:i'}}">
                 <span class="user_name">{{reserv_info.user}}</span></li>
               </li>
 
