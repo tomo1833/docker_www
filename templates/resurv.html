@@ -119,9 +119,9 @@
               <li class="js-modal-open-update"
                 style="grid-column: {{reserv_info.start_date_time|date:'H'}}/{{reserv_info.end_date_time|date:'H'}}; background-color: #465DAA;"
                 data-id={{reserv_info.id}} data-room_id={{reserv_info.room_id }} data-room_user={{reserv_info.user }}
-                data-start_date_time_0="{{reserv_info.start_date_time|date:'Y-m-j'}}"
+                data-start_date_time_0="{{reserv_info.start_date_time|date:'Y-m-d'}}"
                 data-start_date_time_1="{{reserv_info.start_date_time|date:'H:i'}}"
-                data-end_date_time_0="{{reserv_info.end_date_time|date:'Y-m-j'}}"
+                data-end_date_time_0="{{reserv_info.end_date_time|date:'Y-m-d'}}"
                 data-end_date_time_1="{{reserv_info.end_date_time|date:'H:i'}}">
                 <span class="user_name">{{reserv_info.user}}</span></li>
               </li>
