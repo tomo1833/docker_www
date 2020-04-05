@@ -1,0 +1,583 @@
+    /** CSS はhtmlのtag class id の有効範囲が大きいものから記載します。 */
+    /** ************************************************** */
+    /** tag                                                */
+    /** ************************************************** */
+
+    /** h1タグのスタイルです */
+    h1 {
+        font-size: 40px;
+        /* h1タイトルのフォントサイズです */
+        font-family: 'Courgette', cursive;
+        /* googleフォントです */
+        text-align: center;
+        /* 文字の中央よせです */
+      }
+  
+      /** ************************************************** */
+      /** class                                              */
+      /** ************************************************** */
+      /** wrapper のスタイルです */
+      /** bodyタグでもいいですが wrapperを使うことで全体的にpaddingやmarginの調整をとりやすくします */
+      .wrapper {
+        /* 最大横幅です */
+        max-width: 1200px;
+        /* 最小横幅です レスポンシブ対応ではないです */
+        min-width: 700px;
+        /* 外側を操作します。 中央よせをします 0が上下 autoが左右 */
+        margin: 0 auto;
+      }
+  
+      /** reserveのwrapperを使うことでreserveにpaddingやmarginの調整をとりやすくします */
+      .reserve_wrapper {
+        /* 内側を操作します。 上下 50px 左右0px で内側に余白を付けます */
+        padding: 20px 0;
+      }
+  
+      /** -------------------------------------------------- */
+      /** 入力フォーム                                       */
+      /** -------------------------------------------------- */
+      /** reserveのinput部分で使用します */
+      .reserve_input {
+        /* 枠に丸みを付けます */
+        border-radius: 12px;
+        /* 枠の大きさをそのままにします */
+        box-sizing: border-box;
+        /* 枠線を表示します */
+        border: 1px solid #465DAA;
+        /* 内側を操作します。 上下左右 50px で内側に余白を付けます */
+        padding: 20px;
+        /* 外側を操作します。 上下 50px 左右200px で外側に余白を付けます */
+        margin: 50px 50px;
+      }
+  
+      /** reserveのinput部分で入力の部品を囲みます */
+      .reserve_input_div {
+        /* reserve_input からみて相対的な位置を設定します。 positionのデフォルトは staticです */
+        position: relative;
+        /* 外側を操作します。 上下 30px 左右3% で外側に余白を付けます */
+        margin: 30px 3%;
+      }
+  
+      /** input部分で入力の部品の中の実際の部品textを選択します */
+      .reserve_input_div input[type='text'] {
+        /* font-size/line-height googleフォントです */
+        font: 16px/24px 'Noto Serif JP', serif;
+        /* ボックスサイズの算出方法を指定します パディングとボーダーを幅と高さに含めています */
+        box-sizing: border-box;
+        /* 横幅を100%にします。*/
+        width: 100%;
+        /* 文字の間隔を指定します。*/
+        letter-spacing: 1px;
+        /* 内側を操作します。 左 6em(font-sizeに合わせる) で内側に余白を付けます */
+        padding-left: 6em;
+      }
+  
+      /** ルームID */
+      #id_room_id {
+        padding: 4px 0;
+        border: 0;
+        border-bottom: 1px solid #1b2538;
+        background-color: transparent;
+        font: 16px/24px 'Noto Serif JP', serif;
+        box-sizing: border-box;
+        width: 100%;
+        letter-spacing: 1px;
+        padding-left: 6em;
+      }
+  
+      /* 開始日 終了日 */
+      #id_start_date_time_0,
+      #id_end_date_time_0 {
+        width: 70%;
+        padding: 4px 0;
+        border: 0;
+        border-bottom: 1px solid #1b2538;
+        background-color: transparent;
+        font: 16px/24px 'Noto Serif JP', serif;
+        box-sizing: border-box;
+        letter-spacing: 1px;
+        padding-left: 6em;
+      }
+  
+      /* 開始時間 終了時間 */
+      #id_start_date_time_1,
+      #id_end_date_time_1 {
+        width: 30%;
+        padding: 4px 0;
+        border: 0;
+        border-bottom: 1px solid #1b2538;
+        background-color: transparent;
+      }
+  
+  
+      /** input部分で入力の部品の中の実際の部品textにfocusが当たったとき */
+      #id_room_id:focus:focus,
+      .reserve_input_div input[type='text']:focus {
+        /* focus（入力ができるようになるとき）が当たったとき 枠を表示しません */
+        outline: none;
+      }
+  
+      /** 部品のclass です 今回はmrrs/form.pyに記載しています */
+      .reserve_type_text {
+        /* 内側を操作します。 上下 4px 左右0 で内側に余白を付けます */
+        padding: 4px 0;
+        /* bordrを表示しない */
+        border: 0;
+        /* 下線は表示する */
+        border-bottom: 1px solid #1b2538;
+        /* 背景を透過 */
+        background-color: transparent;
+      }
+  
+      /** reserve_type_text に関連する focus_lineのクラスを指定します */
+      #id_room_id:focus~.focus_line,
+      .reserve_type_text~.focus_line {
+        /* reserve_type_text からみて絶対的な位置を設定します。 positionのデフォルトは staticです */
+        position: absolute;
+        /* 下から0 */
+        bottom: 0;
+        /* 左から0 */
+        left: 0;
+        /* 横幅 0 */
+        width: 0;
+        /* 高さ 2px */
+        height: 2px;
+        /* 要素の2つの状態間の変化を0.4秒で操作します */
+        transition: 0.4s;
+        /* 下線を赤にします */
+        background-color: #da3c41;
+      }
+  
+      /** reserve_type_textのforcusに関連する focus_lineのクラスを指定します */
+      #id_room_id:focus~.focus_line,
+      .reserve_type_text:focus~.focus_line,
+      .reserve_input_div.reserve_type_text~.focus_line {
+        /* 横幅 100%にします */
+        width: 100%;
+        /* 要素の2つの状態間の変化を0.4秒で操作します */
+        transition: 0.4s;
+      }
+  
+      /**  reserve_type_text に関連する labelを指定します */
+      #id_start_date_time_0~label,
+      #id_end_date_time_0~label,
+      #id_room_id~label,
+      .reserve_type_text~label {
+        /* reserve_type_text からみて絶対的な位置を設定します。 positionのデフォルトは staticです */
+        position: absolute;
+        /* labelの重なりz軸を 下にするのかな */
+        z-index: -1;
+        /* 上から4px */
+        top: 4px;
+        /* 左から0 */
+        left: 0;
+        /* 横幅 100%にします */
+        width: 100%;
+        /* 要素の2つの状態間の変化を0.5秒で操作します */
+        transition: 0.3s;
+        /* 文字の間隔を指定します。*/
+        letter-spacing: 0.5px;
+        /* ラベルの文字の色を灰色っぽいいろにします */
+        color: #aaaaaa;
+      }
+  
+      /**  reserve_type_textのforcusに関連する labelのクラスを指定します */
+      #id_start_date_time_0:focus~label,
+      #id_end_date_time_0:focus~label,
+      #id_start_date_time_1:focus~label,
+      #id_end_date_time_1:focus~label,
+      #id_room_id:focus~label,
+      .reserve_type_text:focus~label,
+      .reserve_input_div.reserve_type_text~label {
+        font-size: 12px;
+        /* 文字サイズを小さくします */
+        top: -16px;
+        /* 文字位置を上にします テキストの中から上に移動 */
+        transition: 0.3s;
+        /* 要素の2つの状態間の変化を0.4秒で操作します */
+        color: #da3c41;
+        /* 赤文字 */
+      }
+  
+      /** reserve_input_div_button 登録ボタンで使用します  */
+      .reserve_input_div_button {
+        text-align: center;
+        /* 文字を中央に寄せます */
+        margin: 10px auto;
+        /* divを中央に寄せます */
+      }
+  
+      /** submit_insert 登録ボタンのデザインです  */
+      .submit_insert {
+        position: relative;
+        /* reserve_input_div_button からみて相対的な位置を設定します。 positionのデフォルトは staticです */
+        color: #fff;
+        /* 文字色白 */
+        width: 120px;
+        /* 横幅 120px */
+        height: 50px;
+        /* 高さ 50px */
+        line-height: 50px;
+        /* 高さ 50px */
+        border-radius: 12px;
+        /* 枠に丸みを付けます */
+        text-align: center;
+        /* 文字を中央に寄せます */
+        font-family: 'Noto Serif JP', serif;
+        /* googleフォントです */
+        font-size: 16px;
+        /* 文字のサイズです */
+        background-color: #465DAA;
+        /* ボタンの背景色です */
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+        /* ボックスの影を付けます */
+      }
+  
+      /** モーダルです  */
+      .modal {
+        /* 非表示にします */
+        display: none;
+        /* 高さを決めます(ビューの高さの割合) */
+        height: 100vh;
+        /* 特定の場所に配置します */
+        position: fixed;
+        /* トップ */
+        top: 0;
+        /* 横幅 */
+        width: 100%;
+      }
+  
+      /** モーダル背景です  */
+      .modal_bg {
+        /* 背景色 */
+        background: rgba(0, 0, 0, 0.8);
+        /* 高さを決めます(ビューの高さの割合) */
+        height: 100vh;
+        /* 絶対位置に配置します */
+        position: absolute;
+        /* 横幅 */
+        width: 100%;
+        /* トップ */
+        top: 0px;
+        /* 左 */
+        left: 0px;
+        /* レイア  */
+        z-index: 150;
+      }
+  
+      /** モーダル背景です  */
+      .modal_content {
+        /* 背景色 */
+        background: #fff;
+        /* 左 */
+        left: 50%;
+        /* 内側を操作します。 上下 40pxで内側に余白を付けます */
+        padding: 40px;
+        /* 絶対位置に配置します */
+        position: absolute;
+        /* トップ */
+        top: 50%;
+        /* 要素の2つの状態間の変化を操作します */
+        transform: translate(-50%, -50%);
+        /* 横幅 */
+        width: 60%;
+        /* レイアー */
+        z-index: 200;
+      }
+  
+      /** モーダル */
+      .js-modal-open,
+      .js-modal-open-update {
+        /* レイア  */
+        z-index: 1;
+      }
+  
+      /** -------------------------------------------------- */
+      /** リスト                                             */
+      /** -------------------------------------------------- */
+      /** reserveのlist部分で使用します */
+      .reserve_list {
+        /* gridを使います */
+        display: grid;
+        /* reserve_input_div_button からみて相対的な位置を設定します。 positionのデフォルトは staticです */
+        position: relative;
+        /* ボックスサイズの算出方法を指定します パディングとボーダーを幅と高さに含めています */
+        box-sizing: border-box;
+        /* 枠を付けます */
+        border: 1px solid rgba(70, 93, 170, 1);
+      }
+  
+      /** reserveのlist部分の行で使用します */
+      .reserve_list_row {
+        display: grid;
+        /* gridを使います */
+        grid-template-columns: 150px 1fr;
+        /* 150px 1 fr*/
+        background-color: #fff;
+        /* 文字色 */
+        border-top: 1px solid rgba(70, 93, 170, 1);
+        /* 枠を付けます */
+      }
+  
+      /** グリッドのヘッダー部分 */
+      .reserve_list_row-houre {
+        /* 文字色 */
+        color: #fff;
+        /* 背景色 */
+        background-color: #465DAA;
+        /* 枠線 */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        /* 150px 1frで24時間の枠を作成 */
+        grid-template-columns: 150px repeat(24, 1fr);
+      }
+  
+      /** グリッドの最初部分 */
+      .reserve_list_row-houre .reserve_list_row-first {
+        /* 上線 */
+        border-top: 0;
+        /* 背景色 */
+        background-color: #465DAA;
+      }
+  
+      /** グリッドの最初部分 のspan */
+      .reserve_list_row-houre span {
+        /* 文字中央よせ */
+        text-align: center;
+        /* 文字サイズ */
+        font-size: 12px;
+        /* 中央配置 *
+        align-self: center;
+          font-weight: bold;                     /* 文字太さ*/
+        /* 内側を操作します。 上下20px 左右0 で内側に余白を付けます */
+        padding: 20px 0;
+      }
+  
+      /** グリッドのライン部分 */
+      .reserve_list_row-lines {
+        position: absolute;
+        /* reserve_type_text からみて絶対的な位置を設定します。 positionのデフォルトは staticです */
+        height: 100%;
+        /* 高さ100% */
+        width: 100%;
+        /* 横幅100% */
+        background-color: transparent;
+        /* 背景色透過 */
+        grid-template-columns: 150px repeat(24, 1fr);
+        /* 150px 1frで24時間の枠を作成 */
+      }
+  
+      /** グリッドのライン部分 のspan */
+      .reserve_list_row-lines span {
+        display: block;
+        /* ブロック要素にします */
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+        /* 左枠線 */
+      }
+  
+      /** グリッドのライン */
+      .reserve_list_row-first {
+        background-color: #fff;
+        /* 背景色 白 */
+        border-width: 1px 0 0 0;
+        /* 線の太さ 上*/
+        border-color: rgba(0, 0, 0, 0.1);
+        /* 線の色 */
+        border-style: solid;
+        /* 実践 */
+        padding: 15px 0;
+        /* 内側を操作します。 上下左右 15px で内側に余白を付けます */
+        font-size: 12px;
+        /* 文字のサイズ */
+        font-weight: bold;
+        /* 太文字 */
+        text-align: center;
+        /* 中央寄せ */
+        z-index: 100;
+      }
+  
+      /** 文字テキスト */
+      .reserve_text {
+        /* 中央寄せ */
+        text-align: center;
+        /* googleフォントです */
+        font-family: 'Noto Serif JP', serif;
+      }
+  
+      /** 文字テキスト */
+      .reserve_list_row-bars {
+        /* マーカーを外す */
+        list-style: none;
+        /* gridを使います */
+        display: grid;
+        /* 内側を操作します。 上下左右 15px で内側に余白を付けます */
+        padding: 9px 0;
+        /* 外側を操作します。 上下左右 0px で内側に余白を付けます */
+        margin: 0;
+        /* 150px 1frで24時間の枠を作成 */
+        grid-template-columns: repeat(24, 1fr);
+        /* グリッドの間の線 */
+        grid-gap: 8px 0;
+        /* 上線 */
+        border-top: 1px solid rgba(221, 221, 221, 0.8);
+        /* 文字の中央よせ */
+        text-align: center;
+      }
+  
+      /** ユーザー名 */
+      .user_name {
+        /* googleフォントです */
+        font-family: 'Noto Serif JP', serif;
+        /* 文字のサイズ */
+        font-size: 12px;
+        /* 文字色 白 */
+        color: #fff;
+      }
+  
+      .reserve_div_button {
+        display: flex;
+      }
+  
+      .day-pager-paernt {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+      }
+  
+      /** -------------------------------------------------- */
+      /** カレンダー                                         */
+      /** -------------------------------------------------- */
+      .calendar-year-month-date,
+      .calendar-year-month {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: bold;
+      }
+  
+      #mini-calendar table {
+        width: 100%;
+        border-spacing: 0;
+        border-left: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        margin-bottom: 0;
+        line-height: 1.5;
+        border-collapse: separate;
+      }
+  
+      #mini-calendar th,
+      #mini-calendar td {
+        background: #fff;
+        padding: 7px;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+      }
+  
+      #mini-calendar th {
+        color: #fff;
+        background: #465DAA;
+        vertical-align: top;
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+  
+      /* ========================================
+       * #mini-calendar
+      * ========================================*/
+      #mini-calendar th.calendar-sun {
+        color: #DF0D2D;
+        background: #F8E4E4;
+      }
+  
+      #mini-calendar th.calendar-sat {
+        color: #2574D3;
+        background: #E2F3FC;
+      }
+  
+      #mini-calendar td {
+        width: 14.3%;
+        height: 30px;
+        vertical-align: top;
+      }
+  
+      #mini-calendar td.calendar-day-off {
+        background: #F4F3F2;
+        color: #555;
+      }
+  
+      #mini-calendar td.calendar-holiday,
+      #mini-calendar td.calendar-sun {
+        color: #CE2727;
+        background: #FCF3F3;
+      }
+  
+      #mini-calendar td.calendar-sat {
+        color: #54AFC8;
+        background: #F5FBFE;
+      }
+  
+      #mini-calendar .calendar-day-number {
+        font-style: normal;
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        font-weight: bold;
+        font-size: 16px;
+        display: block;
+        padding: 0 3px;
+        line-height: 1.2;
+      }
+  
+      #mini-calendar td.calendar-holiday .day,
+      #mini-calendar td.calendar-sun .day {
+        color: #DF0D2D;
+      }
+  
+      #mini-calendar td.calendar-sat .day {
+        color: #2574D3;
+      }
+  
+      #mini-calendar td span {
+        font-size: 11px;
+        line-height: 1.3;
+        display: block;
+      }
+  
+      #mini-calendar [class*=calender-label] {
+        font-size: 11px;
+        line-height: 1.3;
+        color: #000;
+        background: #FCEBCF;
+        border: solid 1px #D2AC8E;
+        display: block;
+        padding: 3px;
+        margin-top: 3px;
+        border-radius: 4px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -o-border-radius: 4px;
+        -ms-border-radius: 4px;
+      }
+  
+      #mini-calendar td span.calender-label-red {
+        background-color: #FCCFD1;
+        border-color: #D28EA6;
+      }
+  
+      #mini-calendar td span.calender-label-blue {
+        background-color: #CFE4FC;
+        border-color: #8E9BD2;
+      }
+  
+      #mini-calendar td span.calender-label-green {
+        background-color: #E5FCCF;
+        border-color: #99C170;
+      }
+  
+      /* 何もない日 */
+      #mini-calendar td.calendar-none {
+        background: #FBFAF7;
+      }
+  
+      #mini-calendar td.calendar-today {
+        background: #FEFBDA;
+      }
+  
