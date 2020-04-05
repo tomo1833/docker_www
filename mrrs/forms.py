@@ -28,12 +28,12 @@ class reserv_room(forms.Form):
     )
     # 開始日時
     start_date_time = forms.SplitDateTimeField(
-        label="開始日時", required=True, autocomplete="off",
+        label="開始日時", required=True, attrs={"autocomplete"="off"},
     )
 
     # 終了日時
     end_date_time = forms.SplitDateTimeField(
-        label="終了日時", required=True, autocomplete="off",
+        label="終了日時", required=True, attrs={"autocomplete"="off"},
     )
 
 
