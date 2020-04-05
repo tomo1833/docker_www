@@ -15,10 +15,10 @@
 
   <script type="text/javascript" language="javascript">
     $(function () {
-      $('#id_start_date_time_0').datetimepicker({ timepicker: false, dateFormat: 'Y-m-d' });
-      $('#id_start_date_time_1').datetimepicker({ datepicker: false, dateFormat: ' H:i' });
-      $('#id_end_date_time_0').datetimepicker({ timepicker: false, dateFormat: 'Y-m-d' });
-      $('#id_end_date_time_1').datetimepicker({ datepicker: false, dateFormat: ' H:i' });
+      $('#id_start_date_time_0').datetimepicker({ timepicker: false, format: 'Y-m-d' });
+      $('#id_start_date_time_1').datetimepicker({ datepicker: false, format: 'H:i' });
+      $('#id_end_date_time_0').datetimepicker({ timepicker: false, format: 'Y-m-d' });
+      $('#id_end_date_time_1').datetimepicker({ datepicker: false, format: 'H:i' });
 
       $('.js-modal-open').on('click', function () {
         $('.js-modal').fadeIn();
