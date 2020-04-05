@@ -30,9 +30,13 @@ def mrrs(request):
         # 利用者
         reserv_name = request.POST.get("reserv_name")
         # 開始日時
-        start_date_time = request.POST.get("start_date_time")
+        start_date_time_date = request.POST.get("start_date_time_0")
+        start_date_time_time = request.POST.get("start_date_time_1")
+        start_date_time = start_date_time_date + " " + start_date_time_time
         # 終了日時
-        end_date_time = request.POST.get("end_date_time")
+        end_date_time_date = request.POST.get("end_date_time_0")
+        end_date_time_time = request.POST.get("end_date_time_1")
+        end_date_time = end_date_time_date + " " + end_date_time_time
 
         if "登 録" in request.POST.get("action"):
             # リクエストパラメーターをデーターモデルに当て込みます.
