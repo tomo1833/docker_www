@@ -15,10 +15,6 @@ class room_info(models.Model):
     # 削除フラグ : INTEGER型
     del_flg = models.IntegerField()
 
-    def __str__(self):
-        # return u"%s" % (self.room_id)
-        return self.room_id
-
 
 class room_reservation(models.Model):
     """
