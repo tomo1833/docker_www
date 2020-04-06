@@ -1,4 +1,5 @@
 from django import forms
+from django.core import validators
 from . import models
 
 
@@ -32,9 +33,12 @@ class reserv_room(forms.Form):
     # 終了日時
     end_date_time = forms.SplitDateTimeField(label="終了日時", required=True)
 
-    def clean_end_date_time(self):
-        end_date_time = self.cleaned_data["end_date_time"]
-        start_date_time = self.cleaned_data["start_date_time"]
+    def clean(self):
+
+        all_clean_data = super().clean()
+        start_date_time = all_clean_data["start_date_time"]
+        end_date_time = all_clean_data["end_date_time"]
+
         if start_date_time >= end_date_time:
             raise forms.ValidationError("終了日時は開始日時より後を洗濯して下さい。")
         return end_date_time
