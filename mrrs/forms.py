@@ -42,7 +42,9 @@ class reserv_room(forms.Form):
         print(end_date_time)
 
         if start_date_time >= end_date_time:
-            raise forms.ValidationError("終了日時は開始日時より後を洗濯して下さい。")
+            msg = "終了日時は開始日時より後を洗濯して下さい。"
+            self.add_error("end_date_time", msg)
+
         return all_clean_data
 
 
