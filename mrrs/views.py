@@ -94,6 +94,7 @@ def mrrs(request):
         start_date_time__month=today.month,
         start_date_time__day=today.day,
     )
+    print(reserv_data)
     # フォームオブジェクトを取得する.
     form = forms.reserv_room()
 
