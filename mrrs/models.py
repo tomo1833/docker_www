@@ -17,7 +17,7 @@ class room_info(models.Model):
 
     def __str__(self):
         # return u"%s" % (self.room_id)
-        return self.room_name
+        return self.room_id
 
 
 class room_reservation(models.Model):
