@@ -34,10 +34,12 @@ class reserv_room(forms.Form):
     end_date_time = forms.SplitDateTimeField(label="終了日時", required=True)
 
     def clean(self):
-
+        print("TEST")
         all_clean_data = super().clean()
         start_date_time = all_clean_data["start_date_time"]
+        print(start_date_time)
         end_date_time = all_clean_data["end_date_time"]
+        print(end_date_time)
 
         if start_date_time >= end_date_time:
             raise forms.ValidationError("終了日時は開始日時より後を洗濯して下さい。")
