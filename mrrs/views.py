@@ -114,6 +114,10 @@ def mrrs(request):
     return render(request, "resurv.html", display)
 
 
+def form_valid(self, form):
+    return super().form_valid(form)
+
+
 def room(request):
 
     # リクエストがPOST形式の場合 データーベースに会議室予約システムの情報を登録する.
