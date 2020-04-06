@@ -94,7 +94,13 @@ def mrrs(request):
         start_date_time__month=today.month,
         start_date_time__day=today.day,
     )
-    print(reserv_data)
+    print(
+        room_reservation.objects.filter(
+            start_date_time__year=today.year,
+            start_date_time__month=today.month,
+            start_date_time__day=today.day,
+        )
+    )
     # フォームオブジェクトを取得する.
     form = forms.reserv_room()
 
