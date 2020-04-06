@@ -33,12 +33,19 @@ class reserv_room(forms.Form):
     # 終了日時
     end_date_time = forms.SplitDateTimeField(label="終了日時", required=True)
 
+  def clean(self):
+        cleaned_data = super(ContactForm, self).clean()
+        cc_myself = cleaned_data.get("cc_myself")
+        subject = cleaned_data.get("subject")
+
+        if cc_myself and subject:
+
     def clean(self):
         print("TEST")
-        all_clean_data = super().clean()
-        start_date_time = all_clean_data["start_date_time"]
+        all_clean_data = super(reserv_room, self).clean()
+        start_date_time = all_clean_data.get("start_date_time")
         print(start_date_time)
-        end_date_time = all_clean_data["end_date_time"]
+        end_date_time = all_clean_data.get("end_date_time")
         print(end_date_time)
 
         if start_date_time >= end_date_time:
