@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-import uuid
 
 
 class room_info(models.Model):
@@ -27,7 +26,7 @@ class room_reservation(models.Model):
     """
 
     # id : INTEGER型で、主キー
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.IntegerField(primary_key=True)
     # 会議室ID : INTEGER型
     room_id = models.ForeignKey(room_info, on_delete=models.CASCADE)
     # 利用者 : 文字列型30桁
