@@ -40,8 +40,11 @@ def mrrs(request):
         end_date_time = end_date_time_date + " " + end_date_time_time
 
         if "登 録" in request.POST.get("action"):
+            max_id_dic = room_reservation.objects.all().aggregate(Max("id"))
+            reserv_id = max_id_dic["id__max"] + 1
             # リクエストパラメーターをデーターモデルに当て込みます.
             data_object = room_reservation(
+                id=reserv_id,
                 room_id=room_info.objects.get(room_id=room_id),
                 user=reserv_name,
                 start_date_time=start_date_time,
