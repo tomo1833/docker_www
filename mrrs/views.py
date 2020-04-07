@@ -2,6 +2,7 @@ import calendar
 import datetime
 import dateutil.parser
 from dateutil.relativedelta import relativedelta
+from django.db.models import Max
 from django.shortcuts import render
 from .models import room_info, room_reservation
 from . import forms
@@ -40,7 +41,10 @@ def mrrs(request):
 
         if "登 録" in request.POST.get("action"):
             # リクエストパラメーターをデーターモデルに当て込みます.
+            max_data = room_reservation.objects.aggregate(Max("id"))
+            reserv_id = max_data + 1
             data_object = room_reservation(
+                id=reserv_id,
                 room_id=room_info.objects.get(room_id=room_id),
                 user=reserv_name,
                 start_date_time=start_date_time,
