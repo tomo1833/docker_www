@@ -41,8 +41,7 @@ def mrrs(request):
 
         if "登 録" in request.POST.get("action"):
             # リクエストパラメーターをデーターモデルに当て込みます.
-            max_data = room_reservation.objects.aggregate(Max("id"))
-            reserv_id = max_data + 1
+            reserv_id = 1
             data_object = room_reservation(
                 id=reserv_id,
                 room_id=room_info.objects.get(room_id=room_id),
