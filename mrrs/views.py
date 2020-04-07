@@ -8,6 +8,7 @@ from . import forms
 
 
 def mrrs(request):
+
     display = {
         "test": "test",
     }
