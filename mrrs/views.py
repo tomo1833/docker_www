@@ -41,9 +41,7 @@ def mrrs(request):
 
         if "登 録" in request.POST.get("action"):
             # リクエストパラメーターをデーターモデルに当て込みます.
-            reserv_id = 1
             data_object = room_reservation(
-                id=reserv_id,
                 room_id=room_info.objects.get(room_id=room_id),
                 user=reserv_name,
                 start_date_time=start_date_time,
